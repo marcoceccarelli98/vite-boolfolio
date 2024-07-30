@@ -1,21 +1,36 @@
 <script>
 import axios from "axios";
 
-export default{
+export default {
+  data() {
+    return {
+      projects: [],
+    };
+  },
 
-data(){
+  methods: {
+    async getProjects() {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/projects");
 
-}
+        this.projects = response.data.results;
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    },
+  },
 
-methods:{
-    getProjects(){
-        axios.get('http://127.0.0.1:8000/api/projects')
-    }
-}
-
-}
+  created() {
+    this.getProjects();
+  },
+};
 </script>
 
-<template></template>
+<template>
+  <ul>
+    <li v-for="project in this.projects">{{ project.title }}</li>
+  </ul>
+</template>
 
 <style scoped></style>
