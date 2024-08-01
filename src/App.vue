@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
-import AppCard from "./components/AppCard.vue";
 import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
 
 export default {
   data() {
@@ -11,8 +11,8 @@ export default {
   },
 
   components: {
-    AppCard,
     AppHeader,
+    AppMain,
   },
 
   methods: {
@@ -36,19 +36,7 @@ export default {
 
 <template>
   <AppHeader></AppHeader>
-
-  <ul>
-    <li v-for="project in this.projects">
-      <AppCard
-        :title="project.title"
-        :description="project.description"
-        :status="project.status"
-        :start_date="project.start_date"
-        :end_date="project.end_date"
-        :image="project.images[0]"
-      ></AppCard>
-    </li>
-  </ul>
+  <AppMain :projects="projects"></AppMain>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

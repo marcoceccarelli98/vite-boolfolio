@@ -79,8 +79,8 @@ export default {
 
 <style scoped lang="scss">
 .card-container {
-  width: 514px;
-  height: 514px;
+  width: 300px;
+  height: 300px;
   border: 1px solid white;
   background-color: black;
   color: white;
@@ -108,8 +108,8 @@ export default {
   overflow: hidden;
   .poster-image {
     position: relative;
-    width: 512px;
-    height: 512px;
+    width: 300px;
+    height: 300px;
   }
 }
 
