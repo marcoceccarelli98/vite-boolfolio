@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import AppCard from "./components/AppCard.vue";
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
   data() {
@@ -11,6 +12,7 @@ export default {
 
   components: {
     AppCard,
+    AppHeader,
   },
 
   methods: {
@@ -33,6 +35,8 @@ export default {
 </script>
 
 <template>
+  <AppHeader></AppHeader>
+
   <ul>
     <li v-for="project in this.projects">
       <AppCard
