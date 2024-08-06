@@ -75,21 +75,27 @@ export default {
           ></AppCard>
         </li>
       </ul>
-      <nav class="d-flex justify-content-between">
-        <button
-          v-show="this.currentPage > 1"
-          @click="prevPage"
-          class="btn btn-secondary"
-        >
-          Prev
-        </button>
-        <button
-          v-show="this.currentPage < this.projects.last_page"
-          @click="nextPage"
-          class="btn btn-primary"
-        >
-          Next
-        </button>
+      <nav>
+        <ul class="d-flex justify-content-between">
+          <li>
+            <button
+              v-if="this.currentPage > 1"
+              @click="prevPage"
+              class="btn btn-secondary"
+            >
+              Prev
+            </button>
+          </li>
+          <li>
+            <button
+              v-show="this.currentPage < this.projects.last_page"
+              @click="nextPage"
+              class="btn btn-primary"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
       </nav>
     </div>
   </main>
