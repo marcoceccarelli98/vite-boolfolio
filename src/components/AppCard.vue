@@ -34,12 +34,16 @@ export default {
   },
 
   // METHODS
-  methods: {},
+  methods: {
+    goToDetail() {
+      this.$router.push({ name: "ProjectDetail", params: { slug: this.slug } });
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="card-container">
+  <div @click="goToDetail" class="card-container">
     <!-- POSTER -->
     <div class="image-content">
       <img

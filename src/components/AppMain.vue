@@ -30,7 +30,7 @@ export default {
   <main>
     <div class="container">
       <ul>
-        <li v-for="project in projects">
+        <li v-for="project in projects.data">
           <AppCard
             :title="project.title"
             :description="project.description"
@@ -47,9 +47,11 @@ export default {
 
 <style scoped lang="scss">
 main {
-  margin-top: 90px;
+  margin-top: 150px;
   ul {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 60px;
   }
 }
