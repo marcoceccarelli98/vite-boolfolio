@@ -9,20 +9,54 @@ export default {
     AppCard,
   },
 
-  props: {
-    projects: {
-      type: Array,
-      required: false,
-    },
-  },
-
   data() {
     return {
       store,
+      projects: [],
+      api: {
+        baseUrl: "http://127.0.0.1:8000/api/",
+        endPoints: {
+          projectsList: "projects",
+        },
+      },
+      response: {},
+      currentPage: 1,
     };
   },
-  methods: {},
-  created() {},
+
+  methods: {
+    async getProjects() {
+      try {
+        const url = this.api.baseUrl + this.api.endPoints.projectsList;
+        console.log(url);
+
+        const response = await axios.get(url, {
+          params: {
+            page: this.currentPage,
+          },
+        });
+
+        this.projects = response.data.results;
+        console.log(this.projects);
+      } catch (error) {
+        console.error("Error Api projects:", error);
+      }
+    },
+
+    prevPage() {
+      this.currentPage--;
+      this.getProjects();
+    },
+
+    nextPage() {
+      this.currentPage++;
+      this.getProjects();
+    },
+  },
+
+  created() {
+    this.getProjects();
+  },
 };
 </script>
 
@@ -41,6 +75,22 @@ export default {
           ></AppCard>
         </li>
       </ul>
+      <nav class="d-flex justify-content-between">
+        <button
+          v-show="this.currentPage > 1"
+          @click="prevPage"
+          class="btn btn-secondary"
+        >
+          Prev
+        </button>
+        <button
+          v-show="this.currentPage < this.projects.last_page"
+          @click="nextPage"
+          class="btn btn-primary"
+        >
+          Next
+        </button>
+      </nav>
     </div>
   </main>
 </template>
