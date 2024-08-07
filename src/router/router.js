@@ -1,16 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppMain from "../components/AppMain.vue";
+import AppHome from "../components/AppHome.vue";
+import AppProjects from "../components/AppProjects.vue";
 import ProjectDetail from "../components/ProjectDetail.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: AppMain,
+    component: AppHome,
+  },
+  {
+    path: "/projects",
+    name: "Projects",
+    component: AppProjects,
   },
   {
     path: "/projects/:slug",
-    name: "ProjectDetail",
+    name: "detail",
     component: ProjectDetail,
     props: true,
   },

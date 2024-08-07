@@ -3,6 +3,10 @@ export default {
   name: "AppCard",
   components: {},
 
+  data() {
+    return {};
+  },
+
   props: {
     title: {
       type: String,
@@ -28,22 +32,26 @@ export default {
       type: String,
       required: false,
     },
-    data() {
-      return {};
+    slug: {
+      type: String,
+      required: true,
     },
   },
 
   // METHODS
   methods: {
-    goToDetail() {
-      this.$router.push({ name: "ProjectDetail", params: { slug: this.slug } });
-    },
+    // goToDetail() {
+    //   this.$router.push({ name: "ProjectDetail", params: { slug: slug } });
+    // },
   },
 };
 </script>
 
 <template>
-  <div @click="goToDetail" class="card-container">
+  <router-link
+    :to="{ name: 'detail', params: { slug: slug } }"
+    class="card-container"
+  >
     <!-- POSTER -->
     <div class="image-content">
       <img
@@ -62,9 +70,9 @@ export default {
       </li>
       <!-- /TITLE -->
       <!-- DESCRIPTION -->
-      <li>
+      <!-- <li>
         <p class="mb-15">{{ description }}</p>
-      </li>
+      </li> -->
       <!-- /DESCRIPTION -->
       <!-- STATUS -->
       <li>
@@ -72,17 +80,20 @@ export default {
       </li>
       <!-- /STATUS -->
       <!-- START DATE -->
-      <li v-if="status !== 'To Do'" class="mb-15">{{ start_date }}</li>
+      <li v-if="status !== 'To Do'" class="mb-15">
+        Start date: {{ start_date }}
+      </li>
       <!-- /START DATE -->
       <!-- END DATE -->
-      <li v-if="status === 'Done'" class="mb-15">{{ end_date }}</li>
+      <li v-if="status === 'Done'" class="mb-15">End date: {{ end_date }}</li>
       <!-- /END DATE -->
     </ul>
-  </div>
+  </router-link>
 </template>
 
 <style scoped lang="scss">
 .card-container {
+  display: block;
   width: 300px;
   height: 300px;
   border: 1px solid white;

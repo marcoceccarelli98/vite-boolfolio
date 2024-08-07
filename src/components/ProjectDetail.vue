@@ -19,6 +19,8 @@
 import axios from "axios";
 
 export default {
+  name: "ProjectDetail",
+
   props: {
     slug: String,
   },

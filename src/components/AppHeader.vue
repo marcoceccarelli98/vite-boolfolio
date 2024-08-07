@@ -33,10 +33,10 @@ export default {
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"> Projects</a>
+              <a href="/projects" class="nav-link"> Projects</a>
             </li>
           </ul>
 
